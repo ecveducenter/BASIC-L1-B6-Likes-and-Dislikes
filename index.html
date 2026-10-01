@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173b4d">
+  <title>Lesson 6: Likes &amp; Dislikes | Basic English</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #173b4d;
+      --ink-soft: #52707b;
+      --coral: #f1846d;
+      --coral-deep: #d9644f;
+      --mint: #e3f1e9;
+      --mint-deep: #c8e2d4;
+      --paper: #fbfaf6;
+      --white: #fff;
+      --line: #dce6df;
+      --green: #347b62;
+      --red: #bd5448;
+      --serif: "DM Serif Display", Georgia, serif;
+      --sans: "Montserrat", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    button, input { font: inherit; }
+
+    .topbar {
+      min-height: 68px;
+      padding: 0 clamp(20px, 5vw, 76px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      color: inherit;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .brand-mark {
+      width: 31px;
+      height: 31px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--coral);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 19px;
+      letter-spacing: 0;
+    }
+
+    .lesson-mark {
+      color: #c2d4d3;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 315px;
+      padding: 55px clamp(20px, 8vw, 120px) 50px;
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .hero::after {
+      position: absolute;
+      top: -145px;
+      right: 5%;
+      width: 415px;
+      height: 415px;
+      border: 1px solid rgb(227 241 233 / 14%);
+      border-radius: 50%;
+      content: "";
+      box-shadow: 0 0 0 38px rgb(227 241 233 / 4%), 0 0 0 78px rgb(227 241 233 / 3%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 1120px);
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 42px;
+    }
+
+    .eyebrow {
+      margin: 0 0 13px;
+      color: #a9d3c0;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(43px, 6.2vw, 76px);
+      font-weight: 400;
+      line-height: 1.02;
+    }
+
+    h1 em {
+      color: var(--coral);
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      max-width: 590px;
+      margin: 17px 0 0;
+      color: #d2e0df;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .hero-count {
+      flex: 0 0 auto;
+      min-width: 145px;
+      padding: 17px 0 3px 20px;
+      border-left: 1px solid rgb(255 255 255 / 23%);
+      color: #c2d4d3;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .hero-count strong {
+      display: block;
+      color: var(--white);
+      font-family: var(--serif);
+      font-size: 29px;
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    main {
+      width: min(100% - 40px, 1040px);
+      margin: 0 auto;
+      padding: 28px 0 84px;
+    }
+
+    .score-strip {
+      min-height: 69px;
+      margin-top: -1px;
+      padding: 14px 21px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: var(--mint);
+      border-bottom: 2px solid var(--mint-deep);
+    }
+
+    .score-label {
+      color: var(--ink-soft);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .score-value {
+      display: flex;
+      align-items: baseline;
+      gap: 7px;
+      font-family: var(--serif);
+      font-size: 25px;
+    }
+
+    .score-value span:last-child {
+      color: var(--ink-soft);
+      font-family: var(--sans);
+      font-size: 12px;
+    }
+
+    .section-head {
+      margin: 43px 0 20px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .section-kicker {
+      margin: 0 0 7px;
+      color: var(--coral-deep);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .16em;
+    }
+
+    h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(27px, 4vw, 37px);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .section-subtitle {
+      margin: 7px 0 0;
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .progress-summary {
+      flex: 0 0 auto;
+      color: var(--ink-soft);
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .progress-summary strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .quiz-toolbar {
+      margin-bottom: 19px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .quiz-instruction {
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .status {
+      flex: 0 0 auto;
+      color: var(--ink-soft);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .status[data-state="complete"] { color: var(--green); }
+    .status[data-state="incomplete"] { color: var(--red); }
+
+    .question-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .question-card {
+      min-width: 0;
+      padding: 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    .question-card[data-result="correct"] {
+      border-color: #8bbba6;
+      background: #f5fbf7;
+    }
+
+    .question-card[data-result="incorrect"] {
+      border-color: #d89488;
+      background: #fff8f6;
+    }
+
+    .question-meta {
+      margin-bottom: 13px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--ink-soft);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .question-number {
+      width: 27px;
+      height: 27px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      background: var(--mint);
+      border-radius: 50%;
+      color: var(--ink);
+      font-size: 10px;
+    }
+
+    .question-card h3 {
+      margin: 0 0 15px;
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .answers {
+      display: grid;
+      gap: 7px;
+      border: 0;
+      margin: 0;
+      padding: 0;
+    }
+
+    .answer-option {
+      position: relative;
+      min-height: 42px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      border: 1px solid #e6ece7;
+      border-radius: 3px;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 11px;
+      line-height: 1.5;
+      transition: background-color 140ms ease, border-color 140ms ease;
+    }
+
+    .answer-option:hover { border-color: #9bbbad; }
+
+    .answer-option:has(input:checked) {
+      background: #edf6f0;
+      border-color: #75a790;
+    }
+
+    .answer-option:has(input:focus-visible) {
+      outline: 3px solid rgb(241 132 109 / 42%);
+      outline-offset: 2px;
+    }
+
+    .answer-option input {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      opacity: 0;
+    }
+
+    .choice-letter {
+      width: 21px;
+      height: 21px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      margin-top: 1px;
+      border-radius: 50%;
+      background: #f1f4f0;
+      color: var(--ink-soft);
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .answer-option:has(input:checked) .choice-letter {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .question-feedback {
+      min-height: 16px;
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .question-card[data-result="correct"] .question-feedback { color: var(--green); }
+    .question-card[data-result="incorrect"] .question-feedback { color: var(--red); }
+
+    .quiz-actions {
+      position: sticky;
+      z-index: 2;
+      bottom: 12px;
+      margin-top: 22px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      background: rgb(251 250 246 / 94%);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      backdrop-filter: blur(8px);
+    }
+
+    .action-note {
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 8px;
+    }
+
+    .button {
+      min-height: 41px;
+      padding: 0 16px;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 11px;
+      font-weight: 700;
+      transition: background-color 140ms ease, color 140ms ease, border-color 140ms ease;
+    }
+
+    .button-primary {
+      background: var(--coral);
+      color: var(--ink);
+    }
+
+    .button-primary:hover { background: #f69a84; }
+
+    .button-secondary {
+      background: transparent;
+      border-color: #b7c9c0;
+      color: var(--ink);
+    }
+
+    .button-secondary:hover { background: var(--mint); }
+
+    .button:focus-visible {
+      outline: 3px solid rgb(241 132 109 / 42%);
+      outline-offset: 2px;
+    }
+
+    .progress-track {
+      height: 3px;
+      margin-top: 4px;
+      overflow: hidden;
+      background: #d5e4da;
+    }
+
+    .progress-fill {
+      width: 0;
+      height: 100%;
+      background: var(--coral);
+      transition: width 180ms ease;
+    }
+
+    .drill-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .drill-card {
+      min-width: 0;
+      padding: 20px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      transition: border-color 160ms ease, background-color 160ms ease;
+    }
+
+    .drill-card[data-result="correct"] {
+      border-color: #8bbba6;
+      background: #f5fbf7;
+    }
+
+    .drill-card[data-result="incorrect"] {
+      border-color: #d89488;
+      background: #fff8f6;
+    }
+
+    .word-bank {
+      min-height: 54px;
+      margin: 15px 0 12px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .word-token,
+    .answer-token {
+      min-height: 48px;
+      padding: 0 18px;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      background: #e9efef;
+      color: var(--ink);
+      cursor: grab;
+      font-size: 14px;
+      transition: opacity 140ms ease, background-color 140ms ease, border-color 140ms ease;
+    }
+
+    .word-token:hover:not(.is-used) { background: #dce9e7; }
+
+    .word-token.is-used {
+      opacity: .42;
+      cursor: default;
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+    }
+
+    .word-token:focus-visible,
+    .answer-token:focus-visible,
+    .drill-answer:focus-visible {
+      outline: 3px solid rgb(241 132 109 / 42%);
+      outline-offset: 2px;
+    }
+
+    .drill-answer {
+      min-height: 96px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      border: 1px dashed #b5c9c2;
+      border-radius: 12px;
+      background: #fffdf9;
+      transition: background-color 140ms ease, border-color 140ms ease;
+    }
+
+    .drill-answer.is-drop-target {
+      border-color: var(--coral-deep);
+      background: #fff5f1;
+    }
+
+    .answer-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .answer-token {
+      min-height: 39px;
+      padding: 0 13px;
+      background: var(--mint);
+      border-color: var(--mint-deep);
+      cursor: grab;
+    }
+
+    .answer-token:hover { background: #d4eadd; }
+
+    .drop-hint {
+      color: var(--ink-soft);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .drop-hint[hidden] { display: none; }
+
+    .drill-translation {
+      margin: 18px 3px 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .substitution-line {
+      margin: 15px 3px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 7px;
+      color: var(--ink-soft);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .substitution-line strong { color: var(--ink); }
+
+    .substitution-item { white-space: nowrap; }
+
+    .substitution-item + .substitution-item::before {
+      margin-right: 7px;
+      color: #a5b6b1;
+      content: "·";
+    }
+
+    .drill-feedback {
+      min-height: 16px;
+      margin: 12px 3px 0;
+      color: var(--ink-soft);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .drill-card[data-result="correct"] .drill-feedback { color: var(--green); }
+    .drill-card[data-result="incorrect"] .drill-feedback { color: var(--red); }
+
+    footer {
+      padding: 22px 20px;
+      background: var(--ink);
+      color: #c2d4d3;
+      font-size: 10px;
+      text-align: center;
+      letter-spacing: .04em;
+    }
+
+    @media (max-width: 700px) {
+      .topbar { min-height: 59px; }
+      .lesson-mark { max-width: 145px; font-size: 9px; line-height: 1.5; }
+      .hero { min-height: 300px; padding-top: 47px; }
+      .hero::after { top: -105px; right: -255px; width: 350px; height: 350px; }
+      .hero-inner { align-items: flex-start; flex-direction: column; gap: 22px; }
+      .hero-count { padding: 0 0 0 12px; }
+      .hero-count strong { display: inline; margin-right: 5px; }
+      main { width: min(100% - 28px, 540px); padding-top: 18px; }
+      .score-strip { padding-inline: 15px; }
+      .section-head { align-items: flex-start; flex-direction: column; gap: 13px; margin-top: 34px; }
+      .progress-summary { text-align: left; }
+      .progress-summary strong { display: inline; margin-left: 5px; }
+      .question-list { grid-template-columns: 1fr; }
+      .question-card { padding: 16px; }
+      .drill-card { padding: 16px; }
+      .word-token { min-height: 44px; padding-inline: 14px; }
+      .drill-answer { min-height: 90px; padding: 13px; }
+      .quiz-actions { bottom: 7px; align-items: stretch; flex-direction: column; }
+      .action-buttons { display: grid; grid-template-columns: 1fr 1fr; }
+      .action-note { text-align: center; }
+      .button { padding-inline: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <nav class="topbar" aria-label="Điều hướng chính">
+      <a class="brand" href="#top" aria-label="Basic English, đầu trang">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BASIC ENGLISH</span>
+      </a>
+      <span class="lesson-mark">LESSON 6 / LIKES &amp; DISLIKES</span>
+    </nav>
+    <section class="hero" aria-labelledby="lesson-title">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">Everyday conversation</p>
+          <h1 id="lesson-title">Likes <em>&amp;</em> Dislikes</h1>
+          <p class="hero-copy">Học cách nói về điều bạn thích, không thích và những gì bạn quan tâm trong giao tiếp hằng ngày.</p>
+        </div>
+        <div class="hero-count"><strong>30</strong> câu luyện tập<br>English · Vietnamese</div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section class="score-strip" aria-label="Kết quả bài luyện tập">
+      <span class="score-label">KẾT QUẢ</span>
+      <div class="score-value"><span id="score">0</span><span>/ 30 câu đúng</span></div>
+    </section>
+
+    <section aria-labelledby="section-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">PHẦN I</p>
+          <h2 id="section-title">Basic sentences <span lang="vi">Mẫu câu cơ bản</span></h2>
+          <p class="section-subtitle">Chọn nghĩa tiếng Việt phù hợp nhất với từng câu tiếng Anh.</p>
+        </div>
+        <div class="progress-summary">
+          Tiến độ
+          <strong id="progress-text">Đã làm 0 / 15 câu</strong>
+          <div class="progress-track" role="progressbar" aria-label="Tiến độ trả lời" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0">
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-toolbar">
+        <span class="quiz-instruction">Đọc câu tiếng Anh, sau đó chọn bản dịch chính xác nhất.</span>
+        <span class="status" id="quiz-status" role="status" aria-live="polite">Chưa nộp bài</span>
+      </div>
+
+      <form id="quiz-form">
+        <div class="question-list" id="question-list"></div>
+      </form>
+    </section>
+
+    <section aria-labelledby="drill-section-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">PHẦN II</p>
+          <h2 id="drill-section-title">Substitution Drills <span lang="vi">Bài tập thay thế</span></h2>
+          <p class="section-subtitle">Sắp xếp các từ thành câu hoàn chỉnh. Nhấp lại vào từ trong câu để bỏ từ.</p>
+        </div>
+        <div class="progress-summary">
+          Tiến độ
+          <strong id="drill-progress-text">Đã hoàn thành 0 / 15 câu</strong>
+          <div class="progress-track" role="progressbar" aria-label="Tiến độ phần bài tập thay thế" aria-valuemin="0" aria-valuemax="15" aria-valuenow="0">
+            <div class="progress-fill" id="drill-progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-toolbar">
+        <span class="quiz-instruction">Nhấp vào từ phía trên hoặc kéo từ vào khung để tạo câu tiếng Anh.</span>
+        <span class="status" id="drill-status" role="status" aria-live="polite">Chưa nộp bài</span>
+      </div>
+
+      <form id="drill-form">
+        <div class="drill-list" id="drill-list"></div>
+      </form>
+    </section>
+
+    <div class="quiz-actions" id="final-actions">
+      <span class="action-note" id="action-note">Hoàn thành đủ 30 câu ở cả hai phần rồi nộp bài.</span>
+      <div class="action-buttons">
+        <button class="button button-secondary" type="button" id="reset-all-button">Làm lại</button>
+        <button class="button button-primary" type="button" id="submit-all-button">Nộp bài</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>Basic English · Lesson 6</footer>
+
+  <script>
+    const questions = [
+      { en: "I don’t feel like cooking", vi: "Tôi không muốn nấu ăn" },
+      { en: "I like Chinese food", vi: "Tôi thích món ăn Trung Quốc" },
+      { en: "I love dogs", vi: "Tôi yêu thích chó" },
+      { en: "I don’t like him", vi: "Tôi không thích anh ta" },
+      { en: "Do you like football?", vi: "Bạn có thích bóng đá không?" },
+      { en: "I hate violent films", vi: "Tôi ghét phim bạo lực" },
+      { en: "I’m crazy about pizza", vi: "Tôi mê món pizza" },
+      { en: "I’m craving something to eat", vi: "Tôi đang thèm ăn món gì đó" },
+      { en: "I don’t care for your opinion", vi: "Tôi không thích ý kiến của anh" },
+      { en: "I care about you a great deal", vi: "Anh rất quan tâm tới em" },
+      { en: "I loathe the sight of you", vi: "Tôi ghét nhìn thấy anh" },
+      { en: "I’m fond of Italian music", vi: "Tôi thích nhạc Ý" },
+      { en: "He doesn’t find his job very appealing", vi: "Anh ta thấy công việc của mình không có gì hấp dẫn" },
+      { en: "She’s attracted to fast cars", vi: "Cô ấy rất mê xe ô tô chạy với tốc độ cao" },
+      { en: "I can’t stand these people", vi: "Tôi không chịu được những người này" }
+    ];
+
+    const drills = [
+      { en: "I don’t really like Mexican food.", vi: "Thực tình anh không thích món ăn Mexico.", alternatives: [["dislike", "không thích"], ["hate", "ghét"], ["detest", "căm ghét"]] },
+      { en: "It is too spicy.", vi: "Nó quá cay.", alternatives: [["hot.", "cay"], ["rich.", "nhiều dầu mỡ"], ["bland.", "nhạt"]] },
+      { en: "Let’s call that Chinese restaurant.", vi: "Chúng mình hãy gọi điện đến nhà hàng Trung Quốc đó đi.", alternatives: [["Thai", "Thái"], ["Italian", "Ý"], ["German", "Đức"]] },
+      { en: "Are you kidding?", vi: "Bạn đang đùa đấy á?", alternatives: [["joking?", "đùa"], ["serious?", "nghiêm túc"], ["for real?", "nói thật"]] },
+      { en: "I adore dogs.", vi: "Mình rất thích chó.", alternatives: [["cats.", "mèo"], ["horses.", "ngựa"], ["pigs.", "heo"]] },
+      { en: "Did you have a dog when you were growing up?", vi: "Hồi nhỏ bạn có nuôi chó không?", alternatives: [["little?", "nhỏ"], ["small?", "bé"], ["a child?", "nhỏ"]] },
+      { en: "We always had dogs in my family.", vi: "Nhà mình lúc nào cũng nuôi chó.", alternatives: [["constantly", "thường xuyên"], ["occasionally", "thỉnh thoảng"], ["never", "không đời nào"]] },
+      { en: "I’ve got an extra ticket to the Ravens games.", vi: "Mình có dư một vé xem trận đấu của đội Raven.", alternatives: [["Bears", "Bear"], ["Redskins", "Redskin"], ["Giants", "Giant"]] },
+      { en: "That’s a nice pen.", vi: "Cây viết thật đẹp.", alternatives: [["pencil.", "cây bút chì"], ["watch.", "cái đồng hồ đeo tay"], ["necklace.", "sợi dây chuyền"]] },
+      { en: "That’s a nice pen.", vi: "Cây viết thật đẹp.", alternatives: [["good", "tốt"], ["pretty", "xinh"], ["valuable", "quý"]] },
+      { en: "I’ve always cherished it.", vi: "Mình luôn giữ gìn nó.", alternatives: [["esteemed", "quý trọng"], ["prized", "quý trọng"], ["valued", "quý trọng"]] },
+      { en: "I guess he is pretty obnoxious.", vi: "Mình nghĩ là hắn hơi đáng ghét.", alternatives: [["annoying.", "khó chịu"], ["bothersome.", "gây phiền"], ["irritating.", "khó chịu"]] },
+      { en: "His boss knows a player on the team.", vi: "Sếp của anh ấy quen một cầu thủ trong đội bóng.", alternatives: [["employer", "chủ"], ["supervisor", "đốc công"], ["co-worker", "đồng nghiệp"]] },
+      { en: "He just says a lot of stupid things.", vi: "Hắn toàn nói những điều lố bịch.", alternatives: [["dumb", "ngu ngốc"], ["ridiculous", "buồn cười"], ["ignorant", "ngu dốt"]] },
+      { en: "Let’s not invite him out with us tonight.", vi: "Tối nay đừng rủ hắn đi chơi với bọn mình nhé.", alternatives: [["ask", "bảo"], ["request", "mời"], ["bring", "dẫn"]] }
+    ];
+
+    const letters = ["A", "B", "C", "D"];
+    const form = document.querySelector("#quiz-form");
+    const questionList = document.querySelector("#question-list");
+    const scoreOutput = document.querySelector("#score");
+    const progressText = document.querySelector("#progress-text");
+    const progressFill = document.querySelector("#progress-fill");
+    const progressBar = document.querySelector('[role="progressbar"]');
+    const status = document.querySelector("#quiz-status");
+    const actionNote = document.querySelector("#action-note");
+    const drillForm = document.querySelector("#drill-form");
+    const drillList = document.querySelector("#drill-list");
+    const drillStatus = document.querySelector("#drill-status");
+    const drillProgressText = document.querySelector("#drill-progress-text");
+    const drillProgressFill = document.querySelector("#drill-progress-fill");
+    const drillProgressBar = document.querySelector('[aria-label="Tiến độ phần bài tập thay thế"]');
+    const drillAnswers = drills.map(() => []);
+    let scorePartOne = 0;
+    let scorePartTwo = 0;
+    let drillSubmitted = false;
+    let submitted = false;
+
+    function shuffleWords(sentence) {
+      const words = sentence.split(" ");
+      for (let position = words.length - 1; position > 0; position -= 1) {
+        const swapIndex = Math.floor(Math.random() * (position + 1));
+        [words[position], words[swapIndex]] = [words[swapIndex], words[position]];
+      }
+      if (words.length > 1 && words.join(" ") === sentence) words.unshift(words.pop());
+      return words;
+    }
+
+    drills.forEach((drill, index) => {
+      drill.tokens = shuffleWords(drill.en).map((word, tokenIndex) => ({ id: `${index}-${tokenIndex}`, word }));
+    });
+
+    function tokenFor(index, tokenId) {
+      return drills[index].tokens.find((token) => token.id === tokenId);
+    }
+
+    function renderDrills() {
+      drillList.innerHTML = drills.map((drill, index) => `
+        <article class="drill-card" data-drill-index="${index}">
+          <div class="question-meta"><span class="question-number">${String(index + 1).padStart(2, "0")}</span>Sắp xếp từ thành câu</div>
+          <div class="word-bank" aria-label="Kho từ câu ${index + 1}">
+            ${drill.tokens.map((token) => `<button class="word-token" type="button" draggable="true" data-token-id="${token.id}" aria-pressed="false">${token.word}</button>`).join("")}
+          </div>
+          <div class="drill-answer" data-dropzone tabindex="0" role="group" aria-label="Câu trả lời câu ${index + 1}">
+            <span class="drop-hint">Nhấp vào từ phía trên hoặc kéo từ vào đây</span>
+            <div class="answer-line"></div>
+          </div>
+          <p class="drill-translation" lang="vi">${drill.vi}</p>
+          <div class="substitution-line"><strong>Từ thay thế:</strong>${drill.alternatives.map(([word, meaning]) => `<span class="substitution-item"><span lang="en">${word}</span> (${meaning})</span>`).join("")}</div>
+          <p class="drill-feedback" aria-live="polite"></p>
+        </article>
+      `).join("");
+      drills.forEach((_, index) => updateDrillCard(index));
+    }
+
+    function updateDrillCard(index) {
+      const card = drillList.querySelector(`[data-drill-index="${index}"]`);
+      const selectedIds = drillAnswers[index];
+      const selected = new Set(selectedIds);
+      card.querySelectorAll(".word-token").forEach((button) => {
+        const isUsed = selected.has(button.dataset.tokenId);
+        button.classList.toggle("is-used", isUsed);
+        button.setAttribute("aria-pressed", String(isUsed));
+        button.setAttribute("aria-label", isUsed ? `${button.textContent}, đã chọn` : button.textContent);
+      });
+      card.querySelector(".drop-hint").hidden = selectedIds.length > 0;
+      card.querySelector(".answer-line").innerHTML = selectedIds.map((tokenId) => {
+        const token = tokenFor(index, tokenId);
+        return `<button class="answer-token" type="button" draggable="true" data-token-id="${token.id}" aria-label="Bỏ từ ${token.word}">${token.word}</button>`;
+      }).join("");
+    }
+
+    function updateDrillProgress() {
+      const completed = drillAnswers.filter((answer, index) => answer.length === drills[index].tokens.length).length;
+      drillProgressText.textContent = `Đã hoàn thành ${completed} / ${drills.length} câu`;
+      drillProgressFill.style.width = `${(completed / drills.length) * 100}%`;
+      drillProgressBar.setAttribute("aria-valuenow", String(completed));
+      updateGlobalActionNote();
+    }
+
+    function updateTotalScore() {
+      scoreOutput.textContent = String(scorePartOne + scorePartTwo);
+    }
+
+    function updateGlobalActionNote() {
+      const answeredPartOne = form.querySelectorAll('input[type="radio"]:checked').length;
+      const completedPartTwo = drillAnswers.filter((answer, index) => answer.length === drills[index].tokens.length).length;
+      const remaining = questions.length - answeredPartOne + drills.length - completedPartTwo;
+      actionNote.textContent = remaining === 0
+        ? "Bạn đã hoàn thành đủ 30 câu. Sẵn sàng nộp bài."
+        : `Còn ${remaining} / 30 câu chưa hoàn thành.`;
+    }
+
+    function clearDrillResultsForEdit() {
+      if (!drillSubmitted) return;
+      drillSubmitted = false;
+      scorePartTwo = 0;
+      updateTotalScore();
+      drillStatus.textContent = "Chưa nộp bài";
+      drillStatus.dataset.state = "";
+      drillList.querySelectorAll(".drill-card").forEach((card) => {
+        delete card.dataset.result;
+        card.querySelector(".drill-feedback").textContent = "";
+      });
+    }
+
+    function placeDrillToken(index, tokenId, beforeId = null) {
+      if (!tokenFor(index, tokenId)) return;
+      clearDrillResultsForEdit();
+      const answer = drillAnswers[index];
+      const existingIndex = answer.indexOf(tokenId);
+      if (existingIndex >= 0) answer.splice(existingIndex, 1);
+      const insertIndex = beforeId ? answer.indexOf(beforeId) : -1;
+      if (insertIndex >= 0) answer.splice(insertIndex, 0, tokenId);
+      else answer.push(tokenId);
+      updateDrillCard(index);
+      updateDrillProgress();
+    }
+
+    function removeDrillToken(index, tokenId) {
+      const answer = drillAnswers[index];
+      const tokenIndex = answer.indexOf(tokenId);
+      if (tokenIndex < 0) return;
+      clearDrillResultsForEdit();
+      answer.splice(tokenIndex, 1);
+      updateDrillCard(index);
+      updateDrillProgress();
+    }
+
+    drillList.addEventListener("click", (event) => {
+      const sourceButton = event.target.closest(".word-token");
+      const answerButton = event.target.closest(".answer-token");
+      const card = event.target.closest(".drill-card");
+      if (!card) return;
+      const index = Number(card.dataset.drillIndex);
+      if (sourceButton && !sourceButton.classList.contains("is-used")) placeDrillToken(index, sourceButton.dataset.tokenId);
+      else if (answerButton) removeDrillToken(index, answerButton.dataset.tokenId);
+    });
+
+    drillList.addEventListener("dragstart", (event) => {
+      const token = event.target.closest("[data-token-id]");
+      if (!token || token.classList.contains("is-used")) {
+        event.preventDefault();
+        return;
+      }
+      event.dataTransfer.setData("text/plain", token.dataset.tokenId);
+      event.dataTransfer.effectAllowed = "move";
+    });
+
+    drillList.addEventListener("dragover", (event) => {
+      const target = event.target.closest(".drill-answer, .word-bank");
+      if (!target) return;
+      event.preventDefault();
+      if (target.classList.contains("drill-answer")) target.classList.add("is-drop-target");
+    });
+
+    drillList.addEventListener("dragleave", (event) => {
+      const target = event.target.closest(".drill-answer");
+      if (target && !target.contains(event.relatedTarget)) target.classList.remove("is-drop-target");
+    });
+
+    drillList.addEventListener("drop", (event) => {
+      const target = event.target.closest(".drill-answer, .word-bank");
+      if (!target) return;
+      event.preventDefault();
+      target.classList.remove("is-drop-target");
+      const card = target.closest(".drill-card");
+      const index = Number(card.dataset.drillIndex);
+      const tokenId = event.dataTransfer.getData("text/plain");
+      if (target.classList.contains("drill-answer")) {
+        const beforeId = event.target.closest(".answer-token")?.dataset.tokenId;
+        placeDrillToken(index, tokenId, beforeId);
+      } else {
+        removeDrillToken(index, tokenId);
+      }
+    });
+
+    drillForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const incompleteIndex = drillAnswers.findIndex((answer, index) => answer.length !== drills[index].tokens.length);
+      if (incompleteIndex >= 0) {
+        drillStatus.textContent = "Chưa xếp đủ từ cho tất cả câu";
+        drillStatus.dataset.state = "incomplete";
+        actionNote.textContent = "Hãy dùng đủ các từ trong từng câu trước khi nộp bài.";
+        drillList.querySelector(`[data-drill-index="${incompleteIndex}"]`).scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      drillSubmitted = true;
+      scorePartTwo = 0;
+      drills.forEach((drill, index) => {
+        const card = drillList.querySelector(`[data-drill-index="${index}"]`);
+        const answer = drillAnswers[index].map((tokenId) => tokenFor(index, tokenId).word).join(" ");
+        const isCorrect = answer === drill.en;
+        card.dataset.result = isCorrect ? "correct" : "incorrect";
+        card.querySelector(".drill-feedback").textContent = isCorrect ? "Chính xác!" : `Câu đúng: ${drill.en}`;
+        if (isCorrect) scorePartTwo += 1;
+      });
+      updateTotalScore();
+      drillStatus.textContent = "Đã chấm bài";
+      drillStatus.dataset.state = "complete";
+    });
+
+    function choicesFor(index) {
+      const correct = questions[index].vi;
+      const distractors = [];
+      for (let offset = 1; distractors.length < 3; offset += 1) {
+        const candidate = questions[(index + offset * 3) % questions.length].vi;
+        if (candidate !== correct && !distractors.includes(candidate)) distractors.push(candidate);
+      }
+      const choices = [...distractors, correct];
+      for (let position = choices.length - 1; position > 0; position -= 1) {
+        const swapIndex = Math.floor(Math.random() * (position + 1));
+        [choices[position], choices[swapIndex]] = [choices[swapIndex], choices[position]];
+      }
+      return choices;
+    }
+
+    function renderQuestions() {
+      questionList.innerHTML = questions.map((question, index) => {
+        const options = choicesFor(index).map((choice, choiceIndex) => `
+          <label class="answer-option">
+            <input type="radio" name="question-${index}" value="${choiceIndex}" aria-label="${letters[choiceIndex]}: ${choice}">
+            <span class="choice-letter" aria-hidden="true">${letters[choiceIndex]}</span>
+            <span>${choice}</span>
+          </label>
+        `).join("");
+
+        return `
+          <article class="question-card" data-question="${index}">
+            <div class="question-meta"><span class="question-number">${String(index + 1).padStart(2, "0")}</span>Chọn nghĩa tiếng Việt phù hợp nhất</div>
+            <h3 lang="en">${question.en}</h3>
+            <fieldset class="answers" aria-label="Các đáp án cho câu ${index + 1}">${options}</fieldset>
+            <p class="question-feedback" aria-live="polite"></p>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function updateProgress() {
+      const answered = form.querySelectorAll('input[type="radio"]:checked').length;
+      progressText.textContent = `Đã làm ${answered} / ${questions.length} câu`;
+      progressFill.style.width = `${(answered / questions.length) * 100}%`;
+      progressBar.setAttribute("aria-valuenow", String(answered));
+      updateGlobalActionNote();
+    }
+
+    form.addEventListener("change", () => {
+      if (submitted) {
+        submitted = false;
+        scorePartOne = 0;
+        updateTotalScore();
+        status.textContent = "Chưa nộp bài";
+        status.dataset.state = "";
+        form.querySelectorAll(".question-card").forEach((card) => {
+          delete card.dataset.result;
+          card.querySelector(".question-feedback").textContent = "";
+        });
+      }
+      updateProgress();
+    });
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const answers = questions.map((_, index) => form.querySelector(`input[name="question-${index}"]:checked`));
+      const unanswered = answers.filter((answer) => !answer).length;
+
+      if (unanswered > 0) {
+        submitted = false;
+        status.textContent = `Còn ${unanswered} câu chưa trả lời`;
+        status.dataset.state = "incomplete";
+        actionNote.textContent = "Hãy hoàn thành đủ 30 câu ở cả hai phần trước khi nộp bài.";
+        const firstUnanswered = questions.findIndex((_, index) => !answers[index]);
+        form.querySelector(`[data-question="${firstUnanswered}"]`).scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+
+      submitted = true;
+      let correctCount = 0;
+      questions.forEach((question, index) => {
+        const card = form.querySelector(`[data-question="${index}"]`);
+        const selected = answers[index];
+        const selectedLabel = selected.closest("label");
+        const correctIndex = [...card.querySelectorAll("input")].findIndex((input) => {
+          const optionText = input.closest("label").lastElementChild.textContent;
+          return optionText === question.vi;
+        });
+        const feedback = card.querySelector(".question-feedback");
+        card.dataset.result = selectedLabel.lastElementChild.textContent === question.vi ? "correct" : "incorrect";
+        if (card.dataset.result === "correct") {
+          correctCount += 1;
+          feedback.textContent = "Chính xác!";
+        } else {
+          feedback.textContent = `Đáp án đúng: ${letters[correctIndex]}. ${question.vi}`;
+        }
+      });
+
+      scorePartOne = correctCount;
+      updateTotalScore();
+      status.textContent = "Đã chấm bài";
+      status.dataset.state = "complete";
+    });
+
+    document.querySelector("#submit-all-button").addEventListener("click", () => {
+      const unanswered = form.querySelectorAll('input[type="radio"]:checked').length < questions.length;
+      const incompleteDrillIndex = drillAnswers.findIndex((answer, index) => answer.length !== drills[index].tokens.length);
+
+      if (unanswered) {
+        const missingCount = questions.length - form.querySelectorAll('input[type="radio"]:checked').length;
+        status.textContent = `Còn ${missingCount} câu chưa trả lời`;
+        status.dataset.state = "incomplete";
+      }
+      if (incompleteDrillIndex >= 0) {
+        drillStatus.textContent = "Chưa xếp đủ từ cho tất cả câu";
+        drillStatus.dataset.state = "incomplete";
+      }
+      if (unanswered || incompleteDrillIndex >= 0) {
+        actionNote.textContent = "Hãy hoàn thành đủ 30 câu ở cả hai phần trước khi nộp bài.";
+        if (unanswered) {
+          const firstUnanswered = questions.findIndex((_, index) => !form.querySelector(`input[name="question-${index}"]:checked`));
+          form.querySelector(`[data-question="${firstUnanswered}"]`).scrollIntoView({ behavior: "smooth", block: "center" });
+        } else {
+          drillList.querySelector(`[data-drill-index="${incompleteDrillIndex}"]`).scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+      }
+
+      form.requestSubmit();
+      drillForm.requestSubmit();
+      actionNote.textContent = `Bạn trả lời đúng ${scorePartOne + scorePartTwo} / 30 câu.`;
+    });
+
+    document.querySelector("#reset-all-button").addEventListener("click", () => {
+      form.reset();
+      submitted = false;
+      scorePartOne = 0;
+      scorePartTwo = 0;
+      drillSubmitted = false;
+      updateTotalScore();
+      status.textContent = "Chưa nộp bài";
+      status.dataset.state = "";
+      drillStatus.textContent = "Chưa nộp bài";
+      drillStatus.dataset.state = "";
+      form.querySelectorAll(".question-card").forEach((card) => {
+        delete card.dataset.result;
+        card.querySelector(".question-feedback").textContent = "";
+      });
+      drillAnswers.forEach((answer) => answer.splice(0));
+      drillList.querySelectorAll(".drill-card").forEach((card) => {
+        delete card.dataset.result;
+        card.querySelector(".drill-feedback").textContent = "";
+      });
+      drills.forEach((_, index) => updateDrillCard(index));
+      updateProgress();
+      updateDrillProgress();
+      document.querySelector("#section-title").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    renderQuestions();
+    renderDrills();
+    updateProgress();
+    updateDrillProgress();
+  </script>
+</body>
+</html>
